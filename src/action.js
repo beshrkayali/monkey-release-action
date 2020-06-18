@@ -36,6 +36,7 @@ async function validate(pullRequest) {
   const doValidate = JSON.parse(core.getInput("validate") || true) === true;
 
   if (!doValidate) {
+    await review(pullRequest, getReviewApproveEvent(), "Valid release.");
     return pullRequest;
   }
 
